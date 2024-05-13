@@ -14,20 +14,36 @@
 box-sizing: border-box;
 font-family: "Briem Hand", cursive;
   }
-
-canvas {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1; 
+:root{
+    --primary-color:#c85700;
+    --secondary-color:rgb(43 68 66);
+}
+body{
+     
+    background-image: radial-gradient(circle, rgba(244, 251, 255, 0.5), rgba(3, 230, 251, 0.5)),
+                      url('../images/road\ hill.png');
+    background-color: #eaeaea;
+    background-size: cover;
+    background-repeat: repeat;
+}
+.title {
+  position: absolute;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Helvetica';
+  line-height: 100vh;
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: #ccc;
+  text-align: center;
 }
 
 .para {
-  /* width: 80%; */
+  width: 80%;
   font-weight:800;
   max-width: 350px; 
-  height: 10vh; 
+  height: 100vh; 
   max-height: 50px;
   border-radius: 50px;
   display: flex;
@@ -58,6 +74,7 @@ canvas {
 }
 
 .para::after {
+    
   content: "";
   width: 100%;
   height: 100%; 
@@ -89,15 +106,16 @@ canvas {
 
 </style>
 <body>
+    
     <div class="mt-5">
-            <h2 class="text-center " style="color:rgb(151 255 246)"  data-aos="fade-down">Come and join us in Celebrating</h2>
-            <div class=" text-center text-light" style="font-size: 24px;" data-aos="fade-left">James</div>
-            <div class=" text-center" style="color:rgb(151 255 246);font-size: 36px;" data-aos="fade-right">4th</div>
-            <div class=" text-center text-light" style="font-size: 24px;" data-aos="fade-left">Birthday</div>
+            <h1 class="text-center " style="color:var(--secondary-color)"  data-aos="fade-down">Come and join us in Celebrating</h2>
+            <div class="mt-5 text-center " style="font-size: 30px;color:var(--primary-color)" data-aos="fade-left">James</div>
+            <div class=" text-center" style="color:var(--secondary-color);font-size: 36px;" data-aos="fade-right">4th</div>
+            <div class=" text-center " style="font-size: 30px;color:var(--primary-color)" data-aos="fade-left">Birthday</div>
             <div class="text-center my-3">
-            <img src="../images/cake.png" class="img-fluid rounded-5 " data-aos="fade-down" width="700" height="300" alt="">
+            <img src="../images/cake.png" class="m-2 img-fluid rounded-5 " data-aos="fade-down" width="600" height="300" alt="">
             </div>
-            <p class="para text-center mx-auto" style="color:#c85700"  data-aos="fade-right"content="BIRTHDAY CELEBRATION AT"></p>
+            <p class="para text-center mx-auto" style="color:#c85700;font-family:Briem Hand, cursive"  data-aos="fade-right "content="BIRTHDAY CELEBRATION AT"></p>
         
             <div class="dinner text-center mx-2">
                 <img src="../images//dinner.jpg" data-aos="fade-up" alt="" width="600" height="300" class="img-fluid rounded-5">
@@ -105,98 +123,21 @@ canvas {
             <div class="mt-5 ">
                 <ul  class="d-flex flex-wrap justify-content-lg-center justify-content-md-center" >
                 <li class="m-2 list-unstyled"  >
-                    <h5 style="color:orange" >Contact Info</h5>
-                    <p class=" text-white border-radius rounded-5 p-2" >0234334-234</p>
+                    <h4 style="color:var(--primary-color)" >Contact Info</h4>
+                    <p class="border-radius rounded-5 p-2" style="font-size:large;color:var(--secondary-color)" >0234334-234</p>
                 </li>
                 <li class="m-2 list-unstyled ">
-                    <h5 style="color:orange" >Party Celebration</h5>
-                    <p class="  text-white border-radius rounded-5 p-2">Sunday, 24 January 2021 | 9:00am- 12:00pm</p>
+                    <h4 style="color:var(--primary-color)" >Party Celebration</h4>
+                    <p class="border-radius rounded-5 p-2" style="font-size:large;color:var(--secondary-color)">Sunday, 24 January 2021 | 9:00am- 12:00pm</p>
                 </li>
                 <li class="m-2 list-unstyled ">
-                    <h5 style="color:orange" >Party Address</h5>
-                    <p class="  text-white border-radius rounded-5 p-2" >Street 123,UK</p>
+                    <h4 style="color:var(--primary-color)" style="color:var(--secondary-color)">Party Address</h4>
+                    <p class="border-radius rounded-5 p-2"  style="font-size:large;color:var(--secondary-color)">Street 123,UK</p>
                 </li>
                 </ul>
             </div>
     </div>
-    <script>
-        // Déclaration des variables
-    let particles = [];
-    let numParticles = 400;
-
-    function setup() {
-        createCanvas(windowWidth, windowHeight , WEBGL)
-
-        // Création des particules
-        for (let i = 0; i < numParticles; i++) {
-            let p = new Particle(
-                random(-width / 2, width / 2),
-                random(-height / 2, height / 2),
-                random(-200, 200)
-            );
-            particles.push(p);
-        }
-    }
-
-    function draw() {
-        background(0);
-
-        // Point de vue de la caméra
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
-
-        // Mise à jour et affichage des particules
-        for (let p of particles) {
-            p.update();
-            p.display();
-        }
-    }
-
-    // Classe Particle pour représenter une particule
-    class Particle {
-        constructor(x, y, z) {
-            this.pos = createVector(x, y, z);
-            this.vel = createVector(random(-1, 1), random(-1, 1), random(-1, 1));
-            this.acc = createVector(0, 0, 0);
-            this.maxSpeed = 3;
-            this.maxForce = 0.1;
-            this.radius = 5;
-            this.color = color(random(255), random(255), random(255));
-        }
-
-        // Met à jour la position et le mouvement de la particule
-        update() {
-            this.vel.add(this.acc);
-            this.vel.limit(this.maxSpeed);
-            this.pos.add(this.vel);
-            this.acc.mult(0);
-            this.edges();
-        }
-
-        // Affiche la particule
-        display() {
-            ambientLight(255);
-            pointLight(255, 255, 255, this.pos);
-            noStroke();
-            fill(this.color);
-            translate(this.pos.x, this.pos.y, this.pos.z);
-            sphere(this.radius);
-        }
-
-        // Applique une force à la particule
-        applyForce(force) {
-            this.acc.add(force);
-        }
-
-        // Gère les bords de l'écran
-        edges() {
-            if (this.pos.x < -width / 2 || this.pos.x > width / 2) this.vel.x *= -1;
-            if (this.pos.y < -height / 2 || this.pos.y > height / 2) this.vel.y *= -1;
-            if (this.pos.z < -200 || this.pos.z > 200) this.vel.z *= -1;
-        }
-    }
-
-    </script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
@@ -207,6 +148,7 @@ canvas {
             once: true 
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
